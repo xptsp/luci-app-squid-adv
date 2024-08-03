@@ -32,22 +32,12 @@ endef
 define Build/Compile
 endef
 
-define Package/dnsmasq/conffiles
-/etc/config/squid-adv
-endef
-
 define Package/luci-app-squid-adv/install
 	$(INSTALL_DIR) $(1)/www/luci-static/resources/view/squid-adv/
 	$(INSTALL_DATA) ./htdocs/*.js $(1)/www/luci-static/resources/view/squid-adv/
 
-	$(INSTALL_DIR) $(1)/etc/init.d/
-	$(INSTALL_BIN) ./files/squid-adv.init $(1)/etc/init.d/squid-adv
-
-	$(INSTALL_DIR) $(1)/etc/config/
-	$(INSTALL_CONF) ./files/squid-adv.config $(1)/etc/config/squid-adv
-
-	$(INSTALL_DIR) $(1)/etc/uci-defaults/
-	$(INSTALL_BIN) ./files/squid-adv.uci-defaults $(1)/etc/uci-defaults/99-squid-adv
+	$(INSTALL_DIR) $(1)/usr/libexec/rpcd/
+	$(INSTALL_BIN) ./files/luci.squid-adv $(1)/usr/libexec/rpcd/
 
 	$(INSTALL_DIR) $(1)/usr/share/luci/menu.d/
 	$(INSTALL_DATA) ./files/luci-menu.d.json $(1)/usr/share/luci/menu.d/luci-app-squid-adv.json
