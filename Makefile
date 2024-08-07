@@ -19,7 +19,7 @@ define Package/luci-app-squid-adv
 	SUBMENU:=3. Applications
 	TITLE:=Advanced LuCI support for Squid
 	PKGARCH:=all
-	#DEPENDS:=+squid +luci-base
+	#DEPENDS:=+squid +luci-base +coreutils-date
 endef
 
 define Package/luci-app-squid-adv/description
