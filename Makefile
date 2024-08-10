@@ -19,11 +19,16 @@ define Package/luci-app-squid-adv
 	SUBMENU:=3. Applications
 	TITLE:=Advanced LuCI support for Squid
 	PKGARCH:=all
-	#DEPENDS:=+squid +luci-base +coreutils-date
+	DEPENDS:=+squid +luci-base +coreutils-date
 endef
 
 define Package/luci-app-squid-adv/description
 	LuCI Support for Squid, complete with Transparent Proxy support for both HTTP and HTTPS!
+endef
+
+define Package/luci-app-squid-adv/conffiles
+/www/ca/
+/etc/squid/cert/
 endef
 
 define Build/Configure
